@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/app"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wallpaper_gradient">
@@ -11,62 +9,53 @@
         android:id="@+id/clockText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
         android:textColor="@color/white"
         android:textSize="64sp"
         android:fontFamily="sans-serif-light"
-        android:text="00:00"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp" />
+        android:text="00:00" />
 
     <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/clockText"
+        android:layout_marginTop="4dp"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:alpha="0.8"
-        android:text="Monday, 1 January"
-        app:layout_constraintTop_toBottomOf="@id/clockText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appsRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingHorizontal="12dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        app:layout_constraintTop_toBottomOf="@id/dateText"
-        app:layout_constraintBottom_toTopOf="@id/dockContainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="12dp"
-        tools:listitem="@layout/item_app" />
+        android:text="Monday, 1 January" />
 
     <FrameLayout
         android:id="@+id/dockContainer"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/dock_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:background="@drawable/dock_background">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dockRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingHorizontal="8dp"
-            android:overScrollMode="never"
-            tools:listitem="@layout/item_app" />
+            android:overScrollMode="never" />
 
     </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateText"
+        android:layout_above="@id/dockContainer"
+        android:paddingHorizontal="12dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp" />
+
+</RelativeLayout>
